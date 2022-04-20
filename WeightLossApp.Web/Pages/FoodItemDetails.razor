@@ -1,0 +1,36 @@
+﻿@page "/fooditemdetails/{id}"
+@inherits FoodItemDetailsBase
+
+<PageTitle>Food Items</PageTitle>
+
+<h3>Existing Food Items</h3>
+
+@if(FoodItem == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>@FoodItem.Brand @FoodItem.Name</h1> 
+                <h1>@FoodItem.DateTimeEaten</h1>
+            </div>
+            <div class="card-body text-center">
+                <h4>Servings: @FoodItem.Servings</h4>
+                <h4>Total Calories Consumed: @TotalCalories</h4>
+                <h4>Calories Per Serving: @FoodItem.CaloriesPerServing</h4>
+                <h4>Carbs Per Serving: @($"{FoodItem.CarbsPerServing}g")</h4>
+                <h4>Protein Per Serving: @($"{FoodItem.ProteinPerServing}g")</h4>
+            </div>
+            <div class="card-footer text-center">
+                    <a href="/" class="btn btn-primary m-1">Back</a>
+                    <a href="@($"editfooditem/{FoodItem.Id}")" class="btn btn-primary m-1">Edit</a>
+                    <a href="#" class="btn btn-primary m-1">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+}

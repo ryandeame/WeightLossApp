@@ -1,0 +1,89 @@
+﻿@page "/editfooditem/{id}"
+
+@inherits EditFoodItemBase
+
+<EditForm Model="@FoodItem" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <h3>Edit Food Item</h3>
+    <hr />
+    <ValidationSummary />
+    <div class="form-group row">
+        <label for="brand" class="col-sm-2 col-form-label">
+            Brand
+        </label>
+        <div class="col-sm-10">
+            <InputText id="brand" class="form-control" placeholder="Brand"
+                @bind-Value="FoodItem.Brand" />
+            <ValidationMessage For="@(()=> FoodItem.Brand)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">
+            Name
+        </label>
+        <div class="col-sm-10">
+            <InputText id="name" class="form-control" placeholder="Name"
+                @bind-Value="FoodItem.Name" />
+            <ValidationMessage For="@(()=> FoodItem.Name)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="dateEaten" class="col-sm-2 col-form-label">
+            Date Eaten
+        </label>
+        <div class="col-sm-10">
+            <InputDate id="dateEaten" class="form-control"
+                @bind-Value="FoodItem.DateTimeEaten" />
+            <ValidationMessage For="@(()=> FoodItem.DateTimeEaten)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="servings" class="col-sm-2 col-form-label">
+            # of Servings
+        </label>
+        <div class="col-sm-10">
+            <InputNumber id="servings" class="form-control" placeholder="Servings"
+                @bind-Value="FoodItem.Servings" />
+            <ValidationMessage For="@(()=> FoodItem.Servings)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="calories" class="col-sm-2 col-form-label">
+            Calories Per Serving
+        </label>
+        <div class="col-sm-10">
+            <InputNumber id="calories" class="form-control" placeholder="Calories"
+                @bind-Value="FoodItem.CaloriesPerServing" />
+            <ValidationMessage For="@(()=> FoodItem.CaloriesPerServing)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="carbs" class="col-sm-2 col-form-label">
+            Carbs Per Serving
+        </label>
+        <div class="col-sm-10">
+            <InputNumber id="carbs" class="form-control" placeholder="Carbs"
+                @bind-Value="FoodItem.CarbsPerServing" />
+            <ValidationMessage For="@(()=> FoodItem.CarbsPerServing)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="protein" class="col-sm-2 col-form-label">
+            Protein Per Serving
+        </label>
+        <div class="col-sm-10">
+            <InputNumber id="protein" class="form-control" placeholder="Protein"
+                @bind-Value="FoodItem.ProteinPerServing" />
+            <ValidationMessage For="@(()=> FoodItem.ProteinPerServing)" />
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <div style=@Visibility>
+        <hr />
+        <label class="validation-message">
+            @UpdateErrorMessage
+        </label>
+    </div>
+
+
+</EditForm>

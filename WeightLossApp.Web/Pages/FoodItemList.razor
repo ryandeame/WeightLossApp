@@ -1,0 +1,48 @@
+﻿@page "/"
+@inherits FoodItemListBase
+
+<PageTitle>Food Items</PageTitle>
+
+<h3>Daily Digest</h3>
+
+@if(FoodItems == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+  @*<div class="card-deck">
+        @foreach (var item in FoodItems)
+        {
+            <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+                <div class="card-header">
+                    <h3>@item.Brand @item.Name</h3>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="@($"fooditemdetails/{item.Id}")" class="btn btn-primary m-1">View</a>
+                    <a href="@($"editfooditem/{item.Id}")" class="btn btn-primary m-1">Edit</a>
+                    <a href="#" class="btn btn-primary m-1">Delete</a>
+                </div>
+            </div>
+        }
+    </div>*@
+    <div class="card-deck">
+        @foreach (var day in DaysCollection)
+        {
+            <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+                <div class="card-header">
+                    <h3>@day.FoodItems[0].DateTimeEaten.ToString().Split(" ")[0] Total Calories: @day.TotalCalories</h3>                    
+                </div>
+                @foreach (var item in day.FoodItems)
+                {
+                    <div class="card-header">
+                        <p>@item.Brand @item.Name</p>
+                        <a href="@($"fooditemdetails/{item.Id}")" class="btn btn-primary m-1">View</a>
+                        <a href="@($"editfooditem/{item.Id}")" class="btn btn-primary m-1">Edit</a>
+                        <a href="#" class="btn btn-primary m-1">Delete</a>
+                    </div>    
+                }
+            </div>
+        }
+    </div>
+}
